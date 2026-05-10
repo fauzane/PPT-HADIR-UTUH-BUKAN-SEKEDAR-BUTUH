@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp GROW - CAWU 1 (Profesional & Islami)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* --- 1. COLOR VARIABLES & SETUP --- */
+        :root {
+            --primary-dark: #064E3B; /* Emerald Green */
+            --primary-light: #0F766E; /* Teal */
+            --accent-gold: #D4AF37; /* Elegant Gold */
+            --accent-gold-light: #FCEFD4;
+            --bg-body: #E5E7EB;
+            --bg-slide: #FAFAFA; /* Warm White */
+            --text-main: #1F2937;
+            --text-muted: #4B5563;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            display: grid;
+            gap: 50px;
+            grid-template-columns: 1fr;
+            margin: 0;
+            min-height: 100vh;
+            padding: 50px 0;
+            place-items: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- 2. SLIDE CONTAINER & ISLAMIC PATTERN --- */
+        .slide-container {
+            align-items: center;
+            background-color: var(--bg-slide);
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 720px;
+            justify-content: center;
+            overflow: hidden;
+            padding: 60px 80px;
+            position: relative;
+            width: 1280px;
+            /* Subtle Islamic Geometric Pattern */
+            background-image: radial-gradient(var(--accent-gold-light) 1px, transparent 1px);
+            background-size: 40px 40px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Top and Bottom Gold Accents */
+        .slide-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--accent-gold), var(--primary-dark));
+            z-index: 10;
+        }
+
+        .slide-container::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(6, 78, 59, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .slide-container > * {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        /* --- 3. TYPOGRAPHY --- */
+        h1, h2, h3, .amiri-text {
+            font-family: 'Amiri', serif;
+            color: var(--primary-dark);
+            margin: 0;
+        }
+
+        p, li, td, th {
+            color: var(--text-main);
+            line-height: 1.7;
+            font-size: 20px;
+        }
+
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 32px;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .slide-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: left;
+            border-bottom: 2px solid var(--accent-gold-light);
+            padding-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slide-title i {
+            color: var(--accent-gold);
+            font-size: 36px;
+        }
+
+        /* --- 4. LAYOUTS --- */
+        .title-layout {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .title-layout h1 {
+            font-size: 68px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .title-layout .subtitle {
+            font-size: 24px;
+            color: var(--primary-light);
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .title-layout .date-loc {
+            margin-top: 30px;
+            font-size: 20px;
+            color: var(--text-muted);
+            background: #fff;
+            padding: 10px 30px;
+            border-radius: 50px;
+            border: 1px solid var(--accent-gold-light);
+        }
+
+        .section-title-layout {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .section-title-layout h2 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .section-title-layout .ornament {
+            color: var(--accent-gold);
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        /* Two Column */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            height: 100%;
+        }
+
+        .text-content p {
+            margin-bottom: 24px;
+            font-size: 22px;
+            text-align: justify;
+        }
+
+        .text-content p strong {
+            color: var(--primary-dark);
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            border-radius: 16px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.8);
+            font-size: 24px;
+            text-align: center;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(6, 78, 59, 0.2);
+            border: 4px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 10%, transparent 10%), radial-gradient(circle, rgba(212, 175, 55, 0.1) 10%, transparent 10%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.5;
+        }
+
+        /* Cards/Tiles */
+        .tiled-content {
+            display: flex;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .tile {
+            flex: 1;
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--primary-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .tile .icon-box {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gold-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--accent-gold);
+            font-size: 32px;
+        }
+
+        .tile h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .tile p {
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 20px 25px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+
+        th {
+            background-color: var(--primary-dark);
+            color: #fff;
+            font-family: 'Amiri', serif;
+            font-size: 22px;
+            text-align: left;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            font-size: 18px;
+            color: var(--text-main);
+        }
+
+        tr:last-child td { border-bottom: none; }
+        
+        .total-row td {
+            background-color: var(--accent-gold-light);
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 20px;
+        }
+
+        /* Timeline / Steps */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .timeline-step {
+            background: #fff;
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid var(--accent-gold-light);
+            position: relative;
+        }
+
+        .timeline-step::before {
+            content: attr(data-time);
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--accent-gold);
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .timeline-step h3 {
+            font-size: 22px;
+            margin: 15px 0 10px;
+        }
+
+        .timeline-step p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* Bullet Points */
+        .elegant-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .elegant-list li {
+            position: relative;
+            padding: 20px 20px 20px 60px;
+            margin-bottom: 15px;
+            background: #fff;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        .elegant-list i {
+            position: absolute;
+            left: 20px;
+            top: 25px;
+            color: var(--accent-gold);
+            font-size: 24px;
+        }
+
+        /* Highlight Numbers */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 5px solid var(--accent-gold-light);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .stat-box .number {
+            font-family: 'Amiri', serif;
+            font-size: 64px;
+            color: var(--primary-dark);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .label {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Quote / Callout */
+        .quote-box {
+            background: rgba(6, 78, 59, 0.05);
+            border-left: 4px solid var(--accent-gold);
+            padding: 25px 30px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 30px;
+            font-family: 'Amiri', serif;
+            font-size: 24px;
+            color: var(--primary-dark);
+            font-style: italic;
+        }
+
+        /* Full BG Slide */
+        .bg-closing {
+            background: linear-gradient(rgba(6, 78, 59, 0.9), rgba(6, 78, 59, 0.9)), url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&q=80&w=1280');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        
+        .bg-closing h2, .bg-closing p {
+            color: #fff;
+        }
+
+        .bg-closing .ornament {
+            color: var(--accent-gold);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Cover -->
+    <div class="slide-container">
+        <div class="title-layout">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+            <p class="subtitle">Bootcamp GROW - CAWU 1</p>
+            <h1>Hadir Utuh<br>Bukan Cuma Butuh</h1>
+            <p style="font-size: 22px; max-width: 800px; margin-top: 15px;">Membangun Kedisiplinan Emosional untuk Keluarga Sakinah Mawaddah Warahmah</p>
+            <div class="date-loc">
+                <i class="fa-solid fa-mosque" style="color: var(--accent-gold); margin-right: 8px;"></i> Masjid Siti Aisyah | Ahad, 24 Mei 2026
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 2: Transisi Dasar Pemikiran -->
+    <div class="slide-container">
+        <div class="section-title-layout">
+            <i class="fa-solid fa-leaf ornament"></i>
+            <h2>Dasar Pemikiran</h2>
+            <p style="font-size: 24px; max-width: 800px;">Mengapa inisiatif pembinaan emosional keluarga ini sangat mendesak untuk dilaksanakan saat ini?</p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Latar Belakang -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-heart-crack"></i> Darurat Kehadiran Batin</h2>
+        <div class="two-column">
+            <div class="text-content">
+                <div class="quote-box">
+                    "Banyak pasangan yang mampu hadir secara fisik di dalam rumah, namun sayangnya absen secara batin."
+                </div>
+                <p>Permasalahan rumah tangga modern tidak lagi sekadar krisis finansial, melainkan pada <strong>lemahnya disiplin emosional</strong> antarpasangan.</p>
+                <p>Bootcamp GROW hadir sebagai ikhtiar aplikatif melatih <em>softskill</em> manajemen diri. Berlandaskan nilai-nilai Islam, program ini bertujuan mencetak <em>qowwam</em> dan <em>madrasatul ula</em> yang cerdas secara emosional.</p>
+            </div>
+            <div class="image-placeholder">
+                <div style="z-index: 2;">
+                    <i class="fa-solid fa-people-roof" style="font-size: 64px; color: var(--accent-gold); margin-bottom: 20px;"></i>
+                    <br>[Ilustrasi: Keharmonisan Keluarga Muslim]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Tujuan Khusus -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-bullseye"></i> Tujuan Khusus (Capaian 90 Menit)</h2>
+        <div class="tiled-content" style="margin-top: 40px;">
+            <div class="tile">
+                <div class="icon-box"><i class="fa-solid fa-book-quran"></i></div>
+                <h3>1. Pengetahuan</h3>
+                <p>Memahami keterkaitan disiplin diri dengan akhlak rumah tangga sesuai QS. Al-Ashr & tafsir hadits <em>"Khairukum li ahlihi"</em>.</p>
+            </div>
+            <div class="tile">
+                <div class="icon-box"><i class="fa-solid fa-pray"></i></div>
+                <h3>2. Sikap Mental</h3>
+                <p>Menumbuhkan kesadaran bahwa <em>emotional presence</em> (kehadiran emosional) adalah bentuk tanggung jawab dan ibadah harian.</p>
+            </div>
+            <div class="tile">
+                <div class="icon-box"><i class="fa-solid fa-hands-holding-circle"></i></div>
+                <h3>3. Keterampilan</h3>
+                <p>Mampu mempraktikkan teknik "Stop-Think-Speak" dan menyusun deklarasi Komitmen Perbaikan Diri selama 30 hari.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 5: Spesifikasi -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-clipboard-list"></i> Spesifikasi Teknis Acara</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Komponen</th>
+                    <th>Detail Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Tema Kajian</strong></td>
+                    <td>Kedisiplinan: Hubungan Emosional dalam Rumah Tangga</td>
+                </tr>
+                <tr>
+                    <td><strong>Narasumber & MC</strong></td>
+                    <td>Ustadz Budi Setiawan | Moderator: Mas Wafa / Mas Hadid</td>
+                </tr>
+                <tr>
+                    <td><strong>Alokasi Waktu</strong></td>
+                    <td>90 Menit (30% Pemaparan Teori, 70% Simulasi & Praktik)</td>
+                </tr>
+                <tr>
+                    <td><strong>Target Peserta</strong></td>
+                    <td>40+ Pasangan suami-istri & calon pengantin (Usia 22-40 tahun)</td>
+                </tr>
+                <tr>
+                    <td><strong>Output Wajib</strong></td>
+                    <td>
+                        <i class="fa-solid fa-check" style="color: var(--primary-light);"></i> Worksheet Evaluasi Diri Terisi<br>
+                        <i class="fa-solid fa-check" style="color: var(--primary-light);"></i> Kartu Komitmen 30 Hari Ditandatangani
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Slide 6: Materi 1 - Teori -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-book-open-reader"></i> Sesi Teori: "Disiplin = Ibadah" (25')</h2>
+        <div class="two-column">
+            <div class="text-content">
+                <p>Pemaparan interaktif dengan pendekatan kisah hikmah (<em>storytelling</em>).</p>
+                <ul class="elegant-list">
+                    <li><i class="fa-solid fa-quote-right"></i><strong>Definisi Disiplin Emosi:</strong><br>Perspektif QS. Al-Ashr dan HR. Bukhari <em>"Man la yarham..."</em></li>
+                    <li><i class="fa-solid fa-hand-paper"></i><strong>5 "Dosa Disiplin" Rumah Tangga:</strong><br>Ngaret, Nyalahin, Ngilang, Ngambek, dan Ngutang Emosi.</li>
+                    <li><i class="fa-solid fa-scale-balanced"></i><strong>Fondasi Khairukum:</strong><br>Tolok ukur utama kebaikan seorang muslim adalah perlakuannya terhadap keluarga.</li>
+                </ul>
+            </div>
+            <div class="image-placeholder">
+                <div style="z-index: 2;">
+                    <i class="fa-solid fa-quran" style="font-size: 64px; color: var(--accent-gold); margin-bottom: 20px;"></i>
+                    <br>[Ilustrasi: Al-Quran & Suasana Kajian]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Materi 2 - Praktik -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-users-gear"></i> Sesi Praktik: "Dari Tahu ke Mampu" (65')</h2>
+        <div class="timeline">
+            <div class="timeline-step" data-time="15 Menit">
+                <h3>Self-Check</h3>
+                <p>Pengisian lembar Worksheet <em>"Seberapa Hadir Saya di Rumah?"</em> untuk pemetaan awal kondisi peserta (Skala 1-10).</p>
+            </div>
+            <div class="timeline-step" data-time="20 Menit">
+                <h3>Roleplay Jeda</h3>
+                <p>Simulasi teknik "Stop-Think-Speak". Contoh Kasus: Suami asyik bermain gawai saat istri sedang mencurahkan isi hati.</p>
+            </div>
+            <div class="timeline-step" data-time="20 Menit">
+                <h3>Studi Kasus</h3>
+                <p>Diskusi interaktif dalam kelompok kecil (4 orang). Membedah kasus <em>Silent Treatment</em> dan merumuskan solusi syar'i.</p>
+            </div>
+            <div class="timeline-step" data-time="10 Menit">
+                <h3>Deklarasi</h3>
+                <p>Penulisan dan penandatanganan <em>Kartu Komitmen 30 Hari</em> yang dipandu langsung secara khidmat oleh Narasumber.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 8: Ketentuan Narasumber -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-microphone-lines"></i> Pedoman untuk Narasumber</h2>
+        <ul class="elegant-list" style="max-width: 1000px; margin: 0 auto;">
+            <li><i class="fa-solid fa-seedling"></i><strong>Pendekatan Membumi & Solutif:</strong><br>Penyampaian tanpa bias/menghakimi gender. Penggunaan diksi inklusif seperti <em>"kita sebagai tim"</em> (bukan "suami/istri harus").</li>
+            <li><i class="fa-solid fa-comments"></i><strong>Konteks Relatable:</strong><br>Mohon berkenan menyisipkan 2 contoh kasus penyelesaian konflik real (tanpa menyebut nama) agar materi mudah dicerna.</li>
+            <li><i class="fa-solid fa-hourglass-half"></i><strong>Manajemen Waktu Presisi:</strong><br>Menjaga durasi adalah bagian dari disiplin. MC akan memberikan kode pengingat waktu di menit ke-20 sesi teori.</li>
+            <li><i class="fa-solid fa-boxes-packing"></i><strong>Dukungan Fasilitas Penuh:</strong><br>Panitia telah menyiapkan visual (LCD, Proyektor), Audio (Sound), Worksheet, Kartu Komitmen, dan seluruh ATK yang diperlukan.</li>
+        </ul>
+    </div>
+
+    <!-- Slide 9: Indikator Keberhasilan -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-chart-line"></i> Indikator Keberhasilan Materi</h2>
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="number">≥90%</div>
+                <div class="label">Peserta Mengumpulkan<br>Kartu Komitmen</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">4.2</div>
+                <div class="label">Rata-rata Skor Kepuasan<br>(Skala 5.0)</div>
+            </div>
+            <div class="stat-box">
+                <div class="number">30 HR</div>
+                <div class="label">Grup WA Tindak Lanjut<br>Aktif Berdiskusi</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 10: RAB Detail -->
+    <div class="slide-container">
+        <h2 class="slide-title"><i class="fa-solid fa-file-invoice-dollar"></i> Rencana Anggaran Biaya (RAB)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Komponen Logistik & Acara</th>
+                    <th style="text-align: center;">Vol</th>
+                    <th>Satuan</th>
+                    <th style="text-align: right;">Harga Satuan</th>
+                    <th style="text-align: right;">Total Biaya</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Penggandaan Worksheet & Kartu Komitmen</td>
+                    <td style="text-align: center;">40</td>
+                    <td>Lembar</td>
+                    <td style="text-align: right;">Rp 1.000</td>
+                    <td style="text-align: right;">Rp 40.000</td>
+                </tr>
+                <tr>
+                    <td>ATK Panitia (Spidol, Bolpoin Cadangan)</td>
+                    <td style="text-align: center;">1</td>
+                    <td>Paket</td>
+                    <td style="text-align: right;">Rp 20.000</td>
+                    <td style="text-align: right;">Rp 20.000</td>
+                </tr>
+                <tr>
+                    <td>Konsumsi Air Mineral Gelas</td>
+                    <td style="text-align: center;">1</td>
+                    <td>Dus</td>
+                    <td style="text-align: right;">Rp 30.000</td>
+                    <td style="text-align: right;">Rp 30.000</td>
+                </tr>
+                <tr>
+                    <td>Konsumsi Kudapan (Roti / Snack Ringan)</td>
+                    <td style="text-align: center;">40</td>
+                    <td>Pcs</td>
+                    <td style="text-align: right;">Rp 2.500</td>
+                    <td style="text-align: right;">Rp 100.000</td>
+                </tr>
+                <tr>
+                    <td>Infaq / Subsidi Kebersihan Masjid</td>
+                    <td style="text-align: center;">1</td>
+                    <td>Paket</td>
+                    <td style="text-align: right;">Rp 10.000</td>
+                    <td style="text-align: right;">Rp 10.000</td>
+                </tr>
+                <tr>
+                    <td><em>Fee</em> / Mukafah Narasumber (Pemateri)</td>
+                    <td style="text-align: center;">1</td>
+                    <td>Sesi</td>
+                    <td style="text-align: right;">Rp 500.000</td>
+                    <td style="text-align: right;">Rp 500.000</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="4" style="text-align: right; padding-right: 20px;">TOTAL ANGGARAN (Termasuk Pemateri)</td>
+                    <td style="text-align: right;">Rp 700.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Slide 11: Penutup -->
+    <div class="slide-container bg-closing">
+        <div class="section-title-layout">
+            <i class="fa-solid fa-mosque ornament"></i>
+            <h2>Hadir Utuh, Bukan Cuma Butuh</h2>
+            <p style="font-size: 26px; max-width: 900px; margin-top: 20px; font-weight: 300; line-height: 1.6;">
+                "Materi boleh dikemas serius, namun penyampaian harus mengena di hati. Karena tujuan utamanya bukan sekadar peserta paham, tapi peserta siap pulang dan <strong>langsung mempraktikkan</strong>."
+            </p>
+            <div style="margin-top: 50px; border-top: 1px solid rgba(212, 175, 55, 0.5); padding-top: 20px; font-family: 'Amiri', serif; font-size: 28px; color: var(--accent-gold);">
+                وَاللَّهُ الْمُوَفِّقُ إِلَى أَقْوَمِ الطَّرِيقِ
+            </div>
+            <p style="font-size: 16px; margin-top: 10px; opacity: 0.8;">(Dan Allah-lah yang memberi taufik kepada jalan yang paling lurus)</p>
+        </div>
+    </div>
+
+</body>
+</html>
